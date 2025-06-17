@@ -271,6 +271,27 @@ jobs:
           echo "CONFIG_IP6_NF_TARGET_HL=y" >> ./common/arch/arm64/configs/gki_defconfig
           echo "CONFIG_IP6_NF_MATCH_HL=y" >> ./common/arch/arm64/configs/gki_defconfig
 
+      - name: Add Gunyah Support
+        run: |
+          echo "Changing to configuration directory: $CONFIG..."
+          cd "$CONFIG/kernel_platform"
+          
+          echo "Adding configuration settings to gki_defconfig..."
+          echo "CONFIG_GUNYAH=y" >> ./common/arch/arm64/configs/gki_defconfig
+          echo "CONFIG_GUNYAH_PLATFORM_HOOKS=y" >> ./common/arch/arm64/configs/gki_defconfig
+          echo "CONFIG_GUNYAH_VCPU=y" >> ./common/arch/arm64/configs/gki_defconfig
+          echo "CONFIG_GUNYAH_IRQFD=y" >> ./common/arch/arm64/configs/gki_defconfig
+          echo "CONFIG_GUNYAH_IOEVENTFD=y" >> ./common/arch/arm64/configs/gki_defconfig
+          
+          echo "CONFIG_N_GSM=y" >> ./common/arch/arm64/configs/gki_defconfig
+          echo "CONFIG_TTY=y" >> ./common/arch/arm64/configs/gki_defconfig
+          echo "CONFIG_UNIX98_PTYS=y" >> ./common/arch/arm64/configs/gki_defconfig
+          echo "CONFIG_DEVPTS_FS=y" >> ./common/arch/arm64/configs/gki_defconfig
+          echo "CONFIG_NET=y" >> ./common/arch/arm64/configs/gki_defconfig
+          echo "CONFIG_NETDEVICES=y" >> ./common/arch/arm64/configs/gki_defconfig
+          echo "CONFIG_PPP=y" >> ./common/arch/arm64/configs/gki_defconfig
+          echo "CONFIG_TUN=y" >> ./common/arch/arm64/configs/gki_defconfig
+
       - name: Run sed and perl Commands
         run: |
           echo "Changing to configuration directory: $CONFIG..."
